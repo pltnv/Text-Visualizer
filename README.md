@@ -2,7 +2,7 @@
 
 [![Powered by: Google Gemini](https://img.shields.io/badge/Powered%20by-Google%20Gemini-4285F4?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
-**Text-Visualizer** is an intuitive web application built on Vue.js that transforms your raw text into valuable insights. Simply input your text, and the powerful Google Gemini AI will analyze it to generate elegant visualizations, informative charts, and structured data summaries.
+**Text-Visualizer** is a web application built on Vue.js 3 that transforms your raw text into valuable insights. Simply input your text, and the powerful Google Gemini AI will analyze it to generate elegant visualizations, informative charts, and structured data summaries.
 
 # Vue 3 + TypeScript + Vite
 
