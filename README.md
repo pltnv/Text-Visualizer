@@ -1,9 +1,6 @@
-# Text-Visualizer 🤖✨
+# Text-Visualizer 🤖
 
-[![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?logo=vuedotjs&logoColor=white)](https://vuejs.org/)
 [![Powered by: Google Gemini](https://img.shields.io/badge/Powered%20by-Google%20Gemini-4285F4?logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **Text-Visualizer** is an intuitive web application built on Vue.js that transforms your raw text into valuable insights. Simply input your text, and the powerful Google Gemini AI will analyze it to generate elegant visualizations, informative charts, and structured data summaries.
 
