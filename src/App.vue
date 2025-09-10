@@ -3,9 +3,7 @@ import { ref, onMounted } from "vue";
 import { GoogleGenAI } from "@google/genai";
 import Main from "@/views/Main.vue";
 
-import { PROMPT, TEXT } from "@/consts";
-
-// const GEMINI_API_KEY = "AIzaSyDkNRfP-zW1gNLODzYPWTEZpab13H8QvFM";
+import { GEMINI_API_KEY, PROMPT, TEXT } from "@/consts";
 
 // const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
