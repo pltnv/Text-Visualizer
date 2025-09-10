@@ -6,15 +6,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".", // Указывает корневую директорию для разрешения не-относительных модулей
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"] // Соответствует алиасу, заданному в Vite
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue" // Убедитесь, что TypeScript включает Vue-файлы
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
