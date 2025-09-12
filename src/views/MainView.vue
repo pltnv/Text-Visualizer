@@ -2,14 +2,21 @@
 import InputBlock from "@/components/InputBlock.vue";
 import Charts from "@/components/Charts.vue";
 import Summary from "@/components/Summary.vue";
-import { PROMPT, TEXT } from "@/consts";
-import { useGeminiAi } from "@/composables/useGeminiAi";
 import InputText from "@/components/InputBlock.vue";
+import { useGeminiAi } from "@/composables/useGeminiAi";
+import { PROMPT, TEXT } from "@/consts";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
 
-function kek(inputText: string) {
-  console.log(inputText, 111);
+let data;
+
+const { processData, isLoading } = useGeminiAi({
+  apiKey,
+  prompt: PROMPT,
+});
+
+function getData(inputText: string) {
+  data = processData(inputText);
 }
 
 const text = {
@@ -69,15 +76,11 @@ const text = {
 
 
 <template>
-  <div :class="$style.main">
-    <InputBlock @send="kek" />
-    <Summary :summary="text" />
-    <Charts :charts="text.charts" />
+  <div>
+    <InputBlock @send="getData" />
+    <Summary :summary="text" :isLoading="isLoading" />
+    <Charts :charts="text.charts" :isLoading="isLoading" />
   </div>
 </template>
 
 
-<style lang="scss" module>
-.main {
-}
-</style>

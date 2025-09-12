@@ -15,6 +15,10 @@ const props = defineProps({
     required: true,
     default: () => ({}),
   },
+  isLoading: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const isLoading = true;

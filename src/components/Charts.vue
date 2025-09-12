@@ -51,6 +51,7 @@ import { CHART_DEFAULT_OPTIONS } from "@/consts/charts.const";
 
 const props = defineProps<{
   charts: Chart[];
+  isLoading: boolean;
 }>();
 
 ChartJS.register(
