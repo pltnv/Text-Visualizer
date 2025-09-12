@@ -17,6 +17,7 @@ const props = defineProps({
   },
 });
 
+const isLoading = true;
 const hasKeyIdeas = computed(
   () =>
     Array.isArray(props.summary.keyIdeas) && props.summary.keyIdeas.length > 0
@@ -55,6 +56,7 @@ const hasEntities = computed(
 <template>
   <article :class="$style.card">
     <SummaryHeader
+      v-if="summary"
       :mainIdea="summary.mainIdea"
       :sentiment="summary.sentiment"
       :thesis="summary.thesis"

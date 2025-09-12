@@ -4,6 +4,7 @@ import Charts from "@/components/Charts.vue";
 import Summary from "@/components/Summary.vue";
 import { PROMPT, TEXT } from "@/consts";
 import { useGeminiAi } from "@/composables/useGeminiAi";
+import InputText from "@/components/InputBlock.vue";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
 
