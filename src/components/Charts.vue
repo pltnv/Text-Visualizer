@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.charts">
+  <article :class="$style.charts">
     <div v-if="!charts.length" :class="$style.empty">
       Нет числовых данных для отображения
     </div>
@@ -27,7 +27,7 @@
         </div>
       </article>
     </div>
-  </div>
+  </article>
 </template>
     
 <script setup lang="ts">
