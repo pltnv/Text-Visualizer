@@ -3,11 +3,11 @@
     <h2 :class="$style.title">Ключевые слова</h2>
     <div :class="$style.chips">
       <span
-        v-for="(k, i) in keywords"
-        :key="`kw-${i}`"
+        v-for="(keyword, i) in keywords"
+        :key="`keyword-${i}`"
         :class="$style.chip"
       >
-        {{ k }}
+        {{ keyword }}
       </span>
     </div>
   </div>

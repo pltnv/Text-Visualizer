@@ -2,7 +2,9 @@
   <div :class="$style.summaryEntities">
     <h4 :class="$style.title">Сущности</h4>
     <div :class="$style.entityList">
-      <span v-for="(e, i) in entities" :key="`ent-${i}`">{{ e }}</span>
+      <span v-for="(entity, i) in entities" :key="`ent-${i}`">{{
+        entity
+      }}</span>
     </div>
   </div>
 </template>

@@ -22,7 +22,7 @@ export function useGeminiAi(params: UseGeminiParams) {
     try {
       const response = await ai.models.generateContent({
         model: "gemini-2.0-flash-001",
-        contents: `${prompt}${inputText.trim()}`,
+        contents: `${prompt}: ${inputText}`,
       });
 
       if (!response.text) {

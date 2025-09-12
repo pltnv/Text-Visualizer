@@ -8,11 +8,12 @@
     <div :class="$style.problemsBody">
       <ul :class="$style.problemList">
         <li
-          v-for="(p, i) in problemsAndSolutions?.problems || []"
-          :key="`p-${i}`"
+          v-for="(problem, i) in problemsAndSolutions?.problems || []"
+          :key="`ps-${i}`"
         >
-          {{ p }}
+          {{ problem }}
         </li>
+        
         <li v-if="!problemsAndSolutions?.problems?.length">
           — проблем не найдено
         </li>
@@ -20,11 +21,12 @@
 
       <ul :class="$style.solutionList">
         <li
-          v-for="(s, i) in problemsAndSolutions?.solutions || []"
-          :key="`s-${i}`"
+          v-for="(solution, i) in problemsAndSolutions?.solutions || []"
+          :key="`solution-${i}`"
         >
-          {{ s }}
+          {{ solution }}
         </li>
+
         <li v-if="!problemsAndSolutions?.solutions?.length">
           — решений не найдено
         </li>

@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.summaryKeyIdea">
     <h2 :class="$style.title">Ключевые идеи</h2>
+    
     <ol :class="$style.ideasList">
       <li v-for="(idea, i) in keyIdeas" :key="`idea-${i}`">
         <span class="visually-hidden">Идея {{ i + 1 }}:</span>{{ idea }}
