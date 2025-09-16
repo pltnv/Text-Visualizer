@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import type { ProblemsAndSolutions } from "@/types";
+
+const props = defineProps<ProblemsAndSolutions>();
+</script>
+
 <template>
   <div :class="$style.summaryProblemsSolutions">
     <div :class="$style.header">
@@ -13,7 +19,7 @@
         >
           {{ problem }}
         </li>
-        
+
         <li v-if="!problemsAndSolutions?.problems?.length">
           — проблем не найдено
         </li>
@@ -34,19 +40,8 @@
     </div>
   </div>
 </template>
-        
-  <script setup lang="ts">
-interface Props {
-  problemsAndSolutions: {
-    problems: string[];
-    solutions: string[];
-  };
-}
-
-const props = defineProps<Props>();
-</script>
-        
-  <style lang="scss" module>
+    
+<style lang="scss" module>
 .summaryProblemsSolutions {
   background: linear-gradient(
     180deg,

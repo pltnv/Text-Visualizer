@@ -1,36 +1,4 @@
-<template>
-  <article :class="$style.charts">
-    <div v-if="!charts.length" :class="$style.empty">
-      Нет числовых данных для отображения
-    </div>
-
-    <div v-else :class="$style.grid">
-      <article
-        v-for="(chartData, index) in charts"
-        :key="index"
-        :class="$style.chartCard"
-      >
-        <header :class="$style.header">
-          <h3 :class="$style.title">{{ chartData.title }}</h3>
-
-          <p v-if="chartData.description" :class="$style.desc">
-            {{ chartData.description }}
-          </p>
-        </header>
-
-        <div :class="$style.chartWrapper">
-          <component
-            :is="getChartComponent(chartData.type)"
-            :data="chartData.data"
-            :options="CHART_DEFAULT_OPTIONS"
-          />
-        </div>
-      </article>
-    </div>
-  </article>
-</template>
-    
-<script setup lang="ts">
+ <script setup lang="ts">
 import { ref } from "vue";
 import {
   Chart as ChartJS,
@@ -51,7 +19,6 @@ import { CHART_DEFAULT_OPTIONS } from "@/consts/charts.const";
 
 const props = defineProps<{
   charts: Chart[];
-  isLoading: boolean;
 }>();
 
 ChartJS.register(
@@ -85,139 +52,40 @@ function getChartComponent(type: ChartType) {
       return Bar;
   }
 }
-
-function makeChartData(chart: Chart) {
-  console.log(chart);
-  return {
-    labels: chart.labels,
-    datasets: [
-      {
-        label: chart.title,
-        data: chart.data,
-        backgroundColor: [
-          "#3b82f6",
-          "#10b981",
-          "#f59e0b",
-          "#ef4444",
-          "#8b5cf6",
-          "#06b6d4",
-        ],
-        borderColor: "#fff",
-        borderWidth: 1,
-      },
-    ],
-  };
-}
-
-const chartOptions = ref({
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    title: {
-      display: true,
-      text: "Статистика",
-    },
-  },
-});
-
-const chartOptions1 = {
-  responsive: true,
-  plugins: {
-    // Заголовок графика
-    title: {
-      display: true,
-      text: "Динамика продаж по месяцам",
-      font: {
-        size: 16,
-        weight: "bold" as const,
-      },
-      padding: {
-        top: 10,
-        bottom: 30,
-      },
-    },
-    // Подзаголовок/описание
-    subtitle: {
-      display: true,
-      text: "Анализ ежемесячных продаж за первый квартал",
-      color: "#666",
-      font: {
-        size: 12,
-      },
-      padding: {
-        bottom: 20,
-      },
-    },
-    // Легенда
-    legend: {
-      display: true,
-      position: "top" as const,
-      labels: {
-        usePointStyle: true,
-        padding: 20,
-        font: {
-          size: 12,
-        },
-      },
-    },
-    // Всплывающие подсказки
-    tooltip: {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
-      titleColor: "#fff",
-      bodyColor: "#fff",
-      borderColor: "#fff",
-      borderWidth: 1,
-      callbacks: {
-        label: function (context: any) {
-          return `Продажи: ${context.parsed.y} единиц`;
-        },
-      },
-    },
-  },
-  // Настройки осей
-  scales: {
-    y: {
-      beginAtZero: true,
-      title: {
-        display: true,
-        text: "Количество продаж (ед.)",
-        font: {
-          size: 12,
-          weight: "bold" as const,
-        },
-      },
-      ticks: {
-        stepSize: 50,
-      },
-    },
-    x: {
-      title: {
-        display: true,
-        text: "Месяцы",
-        font: {
-          size: 12,
-          weight: "bold" as const,
-        },
-      },
-    },
-  },
-  // Анимации
-  animation: {
-    duration: 1000,
-    easing: "easeOutQuart" as const,
-  },
-  // Отступы
-  layout: {
-    padding: {
-      left: 20,
-      right: 20,
-      top: 20,
-      bottom: 20,
-    },
-  },
-};
 </script>
-    
+
+<template>
+  <article :class="$style.charts">
+    <div v-if="!charts.length" :class="$style.empty">
+      Нет числовых данных для отображения
+    </div>
+
+    <div v-else :class="$style.grid">
+      <article
+        v-for="(chartData, index) in charts"
+        :key="index"
+        :class="$style.chartCard"
+      >
+        <header :class="$style.header">
+          <h3 :class="$style.title">{{ chartData.title }}</h3>
+
+          <p v-if="chartData.description" :class="$style.desc">
+            {{ chartData.description }}
+          </p>
+        </header>
+
+        <div :class="$style.chartWrapper">
+          <component
+            :is="getChartComponent(chartData.type)"
+            :data="chartData.data"
+            :options="CHART_DEFAULT_OPTIONS"
+          />
+        </div>
+      </article>
+    </div>
+  </article>
+</template>
+   
 <style lang="scss" module>
 .charts {
 }

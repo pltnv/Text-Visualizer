@@ -1,6 +1,6 @@
 
   
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import SummaryHeader from "@/components/SummaryHeader.vue";
 import SummaryTerms from "@/components/SummaryTerms.vue";
@@ -8,20 +8,10 @@ import SummaryKeyIdeas from "@/components/SummaryKeyIdeas.vue";
 import SummaryKeywords from "@/components/SummaryKeywords.vue";
 import SummaryProblemsSolutions from "@/components/SummaryProblemsSolutions.vue";
 import SummaryEntities from "@/components/SummaryEntities.vue";
+import type { TextAnalysisResult } from "@/types";
 
-const props = defineProps({
-  summary: {
-    type: Object,
-    required: true,
-    default: () => ({}),
-  },
-  isLoading: {
-    type: Boolean,
-    required: true,
-  },
-});
+const props = defineProps<{ summary: TextAnalysisResult }>();
 
-const isLoading = true;
 const hasKeyIdeas = computed(
   () =>
     Array.isArray(props.summary.keyIdeas) && props.summary.keyIdeas.length > 0
@@ -88,7 +78,6 @@ const hasEntities = computed(
 </template>
   
   <style lang="scss" module>
-/* Design tokens */
 :root {
   --bg: #fbfcfe;
   --card: #ffffff;
@@ -106,7 +95,6 @@ const hasEntities = computed(
   );
 }
 
-/* Utility */
 .visually-hidden {
   position: absolute !important;
   height: 1px;
@@ -163,7 +151,6 @@ const hasEntities = computed(
   gap: 12px;
 }
 
-/* Responsiveness */
 @media (max-width: 880px) {
   .body {
     grid-template-columns: 1fr;

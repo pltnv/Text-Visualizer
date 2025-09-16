@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const props = defineProps<{ terms: string[] }>();
+</script>
+
 <template>
   <div :class="$style.summaryTerms">
     <span v-text="'Термины'" :class="$style.label" />
@@ -12,10 +16,6 @@
     </div>
   </div>
 </template>
-  
-<script setup lang="ts">
-const props = defineProps<{ terms: string[] }>();
-</script>
   
 <style lang="scss" module>
 .summaryTerms {

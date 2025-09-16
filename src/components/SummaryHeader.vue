@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+import type { Sentiment } from "@/types";
+
+interface HeaderProps {
+  mainIdea: string;
+  sentiment: Sentiment;
+  thesis: string;
+}
+
+const props = withDefaults(defineProps<HeaderProps>(), {
+  mainIdea: "",
+  sentiment: "neutral",
+});
+
+const $style = useCssModule();
+
+const sentimentClass = computed(() => {
+  const classMap: Record<string, string> = {
+    positive: `${$style.sentimentPositive}`,
+    negative: `${$style.sentimentNegative}`,
+    mixed: `${$style.sentimentMixed}`,
+    neutral: `${$style.sentimentNeutral}`,
+  };
+
+  return classMap[props.sentiment || "neutral"];
+});
+
+const sentimentLabel = computed((): string => {
+  const labels: Record<Sentiment, string> = {
+    positive: "Позитивная",
+    negative: "Негативная",
+    mixed: "Смешанная",
+    neutral: "Нейтральная",
+  };
+
+  return labels[props.sentiment || "neutral"] || "Нейтральная";
+});
+</script>
+  
 <template>
   <div :class="$style.summaryHeader">
     <div :class="$style.headerContent">
@@ -16,44 +56,7 @@
   </div>
 </template>
   
-<script setup lang="ts">
-import { computed, useCssModule } from "vue";
-import type { Sentiment } from "@/types";
 
-interface Props {
-  mainIdea: string;
-  sentiment: Sentiment;
-  thesis: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  mainIdea: "",
-  sentiment: "neutral",
-});
-
-const $style = useCssModule();
-
-const sentimentClass = computed(() => {
-  const classMap: Record<string, string> = {
-    positive: `${$style.sentimentPositive}`,
-    negative: `${$style.sentimentNegative}`,
-    mixed: `${$style.sentimentMixed}`,
-    neutral: `${$style.sentimentNeutral}`,
-  };
-  return classMap[props.sentiment || "neutral"];
-});
-
-const sentimentLabel = computed((): string => {
-  const labels: Record<string, string> = {
-    positive: "Позитивная",
-    negative: "Негативная",
-    mixed: "Смешанная",
-    neutral: "Нейтральная",
-  };
-  return labels[props.sentiment || "neutral"] || "Нейтральная";
-});
-</script>
-  
 <style lang="scss" module>
 $primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 $shadow-color: rgba(102, 126, 234, 0.3);

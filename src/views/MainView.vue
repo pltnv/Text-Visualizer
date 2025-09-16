@@ -1,22 +1,24 @@
 <script setup lang="ts">
+import { ref, nextTick } from "vue";
+import { useGeminiAi } from "@/composables/useGeminiAi";
+import { PROMPT, TEXT } from "@/consts";
 import InputBlock from "@/components/InputBlock.vue";
 import Charts from "@/components/Charts.vue";
 import Summary from "@/components/Summary.vue";
 import InputText from "@/components/InputBlock.vue";
-import { useGeminiAi } from "@/composables/useGeminiAi";
-import { PROMPT, TEXT } from "@/consts";
+import Loader from "@/components/Loader.vue";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
 
-let data;
+let data = ref("");
 
-const { processData, isLoading } = useGeminiAi({
+const { isLoading, processData } = useGeminiAi({
   apiKey,
   prompt: PROMPT,
 });
 
-function getData(inputText: string) {
-  data = processData(inputText);
+async function getData(inputText: string) {
+  // data = await processData(inputText);
 }
 
 const text = {
@@ -77,10 +79,49 @@ const text = {
 
 <template>
   <div>
-    <InputBlock @send="getData" />
-    <Summary :summary="text" :isLoading="isLoading" />
-    <Charts :charts="text.charts" :isLoading="isLoading" />
+    <InputBlock @send="getData" :isLoading="isLoading" />
+
+    <Transition name="fade" appear>
+      <Loader v-if="isLoading" />
+    </Transition>
+
+    <transition name="slide-up" appear>
+      <Summary v-if="data" :summary="text" />
+    </transition>
+
+    <transition v-if="data" name="slide-up" appear :delay="100">
+      <Charts :charts="text.charts" />
+    </transition>
   </div>
 </template>
+
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.content > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.content > *:nth-child(2) {
+  animation-delay: 200ms;
+}
+</style>
 
 

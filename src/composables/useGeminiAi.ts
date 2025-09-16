@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { GoogleGenAI } from "@google/genai";
+import { TextAnalysisResult } from "@/types";
 
 export interface UseGeminiParams {
   apiKey: string;
@@ -17,7 +18,7 @@ export function useGeminiAi(params: UseGeminiParams) {
     console.error(err);
   }
 
-  async function processData(inputText: string) {
+  async function processData(inputText: string): Promise<TextAnalysisResult> {
     isLoading.value = true;
     try {
       const response = await ai.models.generateContent({

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const props = defineProps<{ keywords: string[] }>();
+</script>
+
 <template>
   <div :class="$style.summaryKeywords">
     <h2 :class="$style.title">Ключевые слова</h2>
@@ -12,10 +16,6 @@
     </div>
   </div>
 </template>
-      
-<script setup lang="ts">
-const props = defineProps<{ keywords: string[] }>();
-</script>
       
 <style lang="scss" module>
 .summaryKeywords {

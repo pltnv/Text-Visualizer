@@ -1,3 +1,8 @@
+
+<script setup lang="ts">
+const props = defineProps<{ entities: string[] }>();
+</script>
+
 <template>
   <div :class="$style.summaryEntities">
     <h4 :class="$style.title">Сущности</h4>
@@ -9,11 +14,7 @@
   </div>
 </template>
     
-  <script setup lang="ts">
-const props = defineProps<{ entities: string[] }>();
-</script>
-    
-  <style lang="scss" module>
+<style lang="scss" module>
 .summaryTerms {
   padding: 10px 12px;
   border-radius: 10px;
