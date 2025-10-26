@@ -12,7 +12,7 @@ Analyzes text and generates structured summaries:
 - Terms and entities
 - Sentiment analysis (positive/negative/neutral/mixed)
 - Problems and solutions (if present)
-- Charts based on numerical data (bar, line, pie, doughnut, radar, polarArea)
+- **Charts based on numerical data (bar, line, pie, doughnut, radar, polarArea)**
 
 ## Tech stack
 
