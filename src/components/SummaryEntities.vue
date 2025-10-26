@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 const props = defineProps<{ entities: string[] }>();
 </script>
@@ -15,7 +14,7 @@ const props = defineProps<{ entities: string[] }>();
 </template>
     
 <style lang="scss" module>
-.summaryTerms {
+.summaryEntities {
   padding: 10px 12px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.75);

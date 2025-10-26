@@ -40,6 +40,7 @@ export interface TextAnalysisResult {
   keywords: string[];
   thesis: string;
   terms: string[];
+  entities: string[];
   sentiment: Sentiment;
   problemsAndSolutions: ProblemsAndSolutions;
   charts: Chart[];

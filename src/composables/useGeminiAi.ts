@@ -11,8 +11,13 @@ export function useGeminiAi(params: UseGeminiParams) {
   const isLoading = ref(false);
   const { apiKey, prompt } = params;
 
-  let ai;
+  // Инициализация AI клиента
+  let ai: GoogleGenAI | null = null;
+  
   try {
+    if (!apiKey) {
+      throw new Error("API key is required");
+    }
     ai = new GoogleGenAI({ apiKey });
   } catch (err) {
     console.error(err);
